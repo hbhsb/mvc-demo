@@ -24,16 +24,6 @@ namespace CaterDal
             }
         }
 
-        public static object ExecuteScalar(string sql, params SQLiteParameter[] ps)
-        {
-            using (SQLiteConnection connection =new SQLiteConnection(connStr))
-            {
-                SQLiteCommand cmd=new SQLiteCommand(sql,connection);
-                cmd.Parameters.AddRange(ps);
-                connection.Open();
-                return cmd.ExecuteScalar();
-            }
-        }
 
         public static DataTable GetDataTable(string sql,params SQLiteParameter[] ps)
         {
