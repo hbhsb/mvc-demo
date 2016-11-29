@@ -13,6 +13,17 @@ namespace CaterDal
     {
         private static string connStr = ConfigurationManager.ConnectionStrings["itcastCater"].ConnectionString;
 
+        public static int ExecuteNonQuery(string sql, params SQLiteParameter[] ps)
+        {
+            using (SQLiteConnection connection=new SQLiteConnection(connStr))
+            {
+                SQLiteCommand cmd = new SQLiteCommand(sql, connection);
+                cmd.Parameters.AddRange(ps);
+                connection.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
 
         public static DataTable GetDataTable(string sql,params SQLiteParameter[] ps)
         {

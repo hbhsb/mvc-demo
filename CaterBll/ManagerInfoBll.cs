@@ -8,6 +8,9 @@ using CaterModel;
 
 namespace CaterBll
 {
+    /// <summary>
+    /// control layer
+    /// </summary>
     public partial class ManagerInfoBll
     {
         ManagerInfoDal dal = new ManagerInfoDal();
@@ -24,6 +27,11 @@ namespace CaterBll
         public bool Edit(ManagerInfo miInfo)
         {
             return dal.Update(miInfo) > 0;
+        }
+
+        public bool Remove(int id)
+        {
+            return dal.Delete(id) > 0;
         }
     }
 }

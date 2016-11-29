@@ -24,7 +24,9 @@ namespace CaterUI
         {
             LoadList();
         }
-
+        /// <summary>
+        /// 加载数据
+        /// </summary>
         private void LoadList()
         {
             dgvList.AutoGenerateColumns = false;
@@ -39,22 +41,45 @@ namespace CaterUI
         private void btnSave_Click(object sender, EventArgs e)
         {
             ManagerInfo miInfo = new ManagerInfo()
+                {
+                    MName = txtName.Text,
+                    MPwd = txtPwd.Text,
+                    MType = rb1.Checked ? 1 : 0
+                };
+            if(txtId.Text.Equals("添加时无编号"))
             {
-                MName = txtName.Text,
-                MPwd = txtPwd.Text,
-                MType = rb1.Checked ? 1 : 0
-            };
-            if (bll.Add(miInfo))
-            {
-                LoadList();
-                txtPwd.Text = "";
-                txtName.Text = "";
-                rb2.Checked = true;
+                #region add
+                if (bll.Add(miInfo))
+                {
+                    LoadList();
+                    txtPwd.Text = "";
+                    txtName.Text = "";
+                    rb2.Checked = true;
+                }
+                else
+                {
+                    MessageBox.Show("添加失败，请检查数据");
+                } 
+                #endregion 
             }
             else
             {
-                MessageBox.Show("添加失败，请检查数据");
+                #region edit
+
+                miInfo.MId = int.Parse(txtId.Text);
+                if (bll.Edit(miInfo))
+                {
+                    LoadList();
+                }
+
+                #endregion
             }
+
+            txtName.Text = "";
+            txtPwd.Text = "";
+            rb2.Checked = true;
+            btnSave.Text = "添加";
+            txtId.Text = "添加时无编号";
         }
 
         private void dgvList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -69,7 +94,7 @@ namespace CaterUI
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvList.Rows[e.RowIndex];
-            txtId.Text = row.Cells[0].Value.ToString();
+            txtId.Text = row.Cells[0].Value.ToString(); 
             txtName.Text = row.Cells[1].Value.ToString();
             if (row.Cells[2].Value.ToString().Equals("1"))
             {
@@ -80,6 +105,42 @@ namespace CaterUI
                 rb2.Checked = true;
             }
             btnSave.Text = "修改";
+            txtPwd.Text = "这是原来的密码吗";
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtId.Text = "添加时无编号";
+            txtName.Text = "";
+            txtPwd.Text = "";
+            rb2.Checked = true;
+            btnSave.Text = "添加";
+        }
+        /// <summary>
+        /// 删除选中的行
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            var rows = dgvList.SelectedRows;
+            if (rows.Count>0)
+            {
+                DialogResult result= MessageBox.Show("确定要删除吗？", "提示",MessageBoxButtons.OKCancel);
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+                int id = int.Parse(rows[0].Cells[0].Value.ToString());
+                if (bll.Remove(id))
+                {
+                    LoadList();
+                }
+            }
+            else
+            {
+                MessageBox.Show("请选中要删除的行");
+            }
         }
     }
 }

@@ -44,15 +44,30 @@ namespace CaterDal
 
         public int Update(ManagerInfo miInfo)
         {
-            string sql = "update ManagerInfo set mname=@name,mpwd=@pwd,mtpye=@pwd where mid=@id";
-            SQLiteParameter[] parameters =
+            List<SQLiteParameter>parameters=new List<SQLiteParameter>();
+
+            parameters.Add(new SQLiteParameter("@name", miInfo.MName));
+            string sql = "update ManagerInfo set mname=@name";
+            if (!miInfo.MPwd.Equals("这是原来的密码吗"))
             {
-                new SQLiteParameter("@name", miInfo.MName),
-                new SQLiteParameter("@pwd", miInfo.MPwd),
-                new SQLiteParameter("@type", miInfo.MType),
-                new SQLiteParameter("@id", miInfo.MId)
-            };
-            return SqliteHelper.ExecuteNonQuery(sql, parameters);
+                sql += ",mpwd=@pwd";
+                parameters.Add(new SQLiteParameter("@pwd", Md5Helper.EncryptString(miInfo.MPwd)));
+            }
+            sql+= ",mtype=@type where mid=@id";
+            parameters.Add(new SQLiteParameter("@type", miInfo.MType));
+            parameters.Add(new SQLiteParameter("@id", miInfo.MId));
+            return SqliteHelper.ExecuteNonQuery(sql, parameters.ToArray());
+        }
+        /// <summary>
+        /// 根据编号删除管理员
+        /// </summary>
+        /// <param name="id">要删除行的id</param>
+        /// <returns>受影响的行数</returns>
+        public int Delete(int id)
+        {
+            string sql = "delete from ManagerInfo where mid=@id";
+            SQLiteParameter parameter = new SQLiteParameter("@id", id);
+            return SqliteHelper.ExecuteNonQuery(sql, parameter);
         }
     }
 
