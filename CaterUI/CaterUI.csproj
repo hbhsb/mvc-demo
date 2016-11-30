@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormManagerInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormManagerInfo.resx">
       <DependentUpon>FormManagerInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -65,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,6 +110,37 @@
       <Project>{cefad441-dc44-4bbc-bbc2-6334a5f21e3d}</Project>
       <Name>CaterModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="images\desk1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\desk2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\loginBg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\menuBg.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\menuDish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\menuManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\menuMember.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\menuOrder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\menuQuit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\menuTable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

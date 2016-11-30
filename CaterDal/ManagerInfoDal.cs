@@ -69,6 +69,29 @@ namespace CaterDal
             SQLiteParameter parameter = new SQLiteParameter("@id", id);
             return SqliteHelper.ExecuteNonQuery(sql, parameter);
         }
+        /// <summary>
+        /// 根据用户名查找对象，判断用户输入是否正确
+        /// </summary>
+        /// <param name="name">要查找的用户名</param>
+        /// <returns>返回查找到的第一个对象</returns>
+        public ManagerInfo GetByName(string name)
+        {
+            ManagerInfo managerInfo = null;
+            string sql = "select * from managerInfo where mname=@name";
+            SQLiteParameter parameter=new SQLiteParameter("@name",name);
+            DataTable table = SqliteHelper.GetDataTable(sql, parameter);
+            if (table.Rows.Count > 0)
+            {
+                managerInfo = new ManagerInfo()
+                {
+                    MId = Convert.ToInt32(table.Rows[0][0]),
+                    MName = name,
+                    MPwd = table.Rows[0][2].ToString(),
+                    MType = Convert.ToInt32(table.Rows[0][3])
+                };
+            }
+            return managerInfo;
+        }
     }
 
 }
