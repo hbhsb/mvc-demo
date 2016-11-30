@@ -16,5 +16,24 @@ namespace CaterUI
         {
             InitializeComponent();
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            int type = Convert.ToInt32(this.Tag);
+            if (type!=1)
+            {
+                menuManagerInfo.Visible = false;
+            }
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MenuQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

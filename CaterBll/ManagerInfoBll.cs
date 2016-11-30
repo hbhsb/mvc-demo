@@ -41,8 +41,9 @@ namespace CaterBll
         /// <param name="name"></param>
         /// <param name="pwd"></param>
         /// <returns>返回登录结果</returns>
-        public LoginState Login(string name, string pwd)
+        public LoginState Login(string name, string pwd,out int type)
         {
+            type = -1;
             ManagerInfo managerInfo = dal.GetByName(name);
             if (managerInfo == null)
             {
@@ -52,6 +53,7 @@ namespace CaterBll
             {
                 if (managerInfo.MPwd.Equals(Md5Helper.EncryptString(pwd)))
                 {
+                    type = managerInfo.MType;
                     return LoginState.Ok;
                 }
                 else

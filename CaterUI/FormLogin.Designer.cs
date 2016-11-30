@@ -61,6 +61,8 @@
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(164, 29);
             this.textName.TabIndex = 2;
+            this.textName.Text = "dsm";
+            this.textName.TextChanged += new System.EventHandler(this.textName_TextChanged);
             // 
             // textPwd
             // 
@@ -70,6 +72,7 @@
             this.textPwd.PasswordChar = '*';
             this.textPwd.Size = new System.Drawing.Size(164, 29);
             this.textPwd.TabIndex = 3;
+            this.textPwd.Text = "dsm";
             // 
             // FormLogin
             // 
@@ -86,6 +89,7 @@
             this.MinimizeBox = false;
             this.Name = "FormLogin";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

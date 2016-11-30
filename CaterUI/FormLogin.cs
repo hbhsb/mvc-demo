@@ -28,12 +28,14 @@ namespace CaterUI
         {
             string name = textName.Text;
             string pwd = textPwd.Text;
+            int type;
             ManagerInfoBll bll=new ManagerInfoBll();
-            LoginState login = bll.Login(name, pwd);
+            LoginState login = bll.Login(name, pwd,out type);
             switch (login)
             {
                 case LoginState.Ok:
                     FormMain main=new FormMain();
+                    main.Tag = type;
                    //将登录窗体隐藏
                    this.Hide();
                     main.Show();
@@ -45,6 +47,16 @@ namespace CaterUI
                     MessageBox.Show("密码错误");
                     break;
             }
+        }
+
+        private void textName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
