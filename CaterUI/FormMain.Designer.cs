@@ -62,6 +62,7 @@
             this.menuManagerInfo.Name = "menuManagerInfo";
             this.menuManagerInfo.Size = new System.Drawing.Size(76, 68);
             this.menuManagerInfo.Text = "toolStripMenuItem1";
+            this.menuManagerInfo.Click += new System.EventHandler(this.menuManagerInfo_Click);
             // 
             // menuMemberInfo
             // 

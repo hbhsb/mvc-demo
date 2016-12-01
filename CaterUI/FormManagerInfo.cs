@@ -14,9 +14,19 @@ namespace CaterUI
 {
     public partial class FormManagerInfo : Form
     {
-        public FormManagerInfo()
+        private FormManagerInfo()
         {
             InitializeComponent();
+        }
+
+        private static FormManagerInfo _form;
+        public static FormManagerInfo CreateFormManagerInfo()
+        {
+            if (_form == null)
+            {
+                _form=new FormManagerInfo();
+            }
+            return _form;
         }
         ManagerInfoBll bll = new ManagerInfoBll();
 
@@ -141,6 +151,16 @@ namespace CaterUI
             {
                 MessageBox.Show("请选中要删除的行");
             }
+        }
+
+        private void FormManagerInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _form = null;
+        }
+
+        private void FormManagerInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
         }
     }
 }
