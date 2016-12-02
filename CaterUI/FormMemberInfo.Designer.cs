@@ -85,6 +85,7 @@
             this.btnSearchAll.TabIndex = 5;
             this.btnSearchAll.Text = "显示全部";
             this.btnSearchAll.UseVisualStyleBackColor = true;
+            this.btnSearchAll.Click += new System.EventHandler(this.btnSearchAll_Click);
             // 
             // txtPhoneSearch
             // 
@@ -92,6 +93,7 @@
             this.txtPhoneSearch.Name = "txtPhoneSearch";
             this.txtPhoneSearch.Size = new System.Drawing.Size(109, 21);
             this.txtPhoneSearch.TabIndex = 3;
+            this.txtPhoneSearch.Leave += new System.EventHandler(this.txtPhoneSearch_Leave);
             // 
             // label2
             // 
@@ -108,6 +110,7 @@
             this.txtNameSearch.Name = "txtNameSearch";
             this.txtNameSearch.Size = new System.Drawing.Size(110, 21);
             this.txtNameSearch.TabIndex = 1;
+            this.txtNameSearch.TextChanged += new System.EventHandler(this.txtNameSearch_TextChanged);
             // 
             // label1
             // 
@@ -348,6 +351,7 @@
             this.Controls.Add(this.groupBox3);
             this.Name = "FormMemberInfo";
             this.Text = "FormMemberInfo";
+            this.Load += new System.EventHandler(this.FormMemberInfo_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
