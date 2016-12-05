@@ -218,6 +218,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "FormTypeInfo";
             this.Text = "会员分类管理";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormTypeInfo_FormClosing);
             this.Load += new System.EventHandler(this.FormTypeInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.groupBox1.ResumeLayout(false);

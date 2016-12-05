@@ -18,6 +18,8 @@ namespace CaterUI
         {
             InitializeComponent();
         }
+
+        private DialogResult result;
         MemberTypeInfoBll bll = new MemberTypeInfoBll();
         private void FormTypeInfo_Load(object sender, EventArgs e)
         {
@@ -64,6 +66,7 @@ namespace CaterUI
             txtTitle.Text = "";
             txtDiscount.Text = "";
             btnSave.Text = "添加";
+            result = DialogResult.OK;
         }
 
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -100,6 +103,12 @@ namespace CaterUI
             {
                 MessageBox.Show("删除失败");
             }
+            result = DialogResult.OK;
+        }
+
+        private void FormTypeInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = result;
         }
     }
 }

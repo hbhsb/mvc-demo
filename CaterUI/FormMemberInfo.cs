@@ -150,5 +150,16 @@ namespace CaterUI
                 LoadList();
             }
         }
+
+        private void btnAddType_Click(object sender, EventArgs e)
+        {
+            FormTypeInfo formTypeInfo=new FormTypeInfo();
+            DialogResult result=formTypeInfo.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadTypeList();
+                LoadList();
+            }
+        }
     }
 }
