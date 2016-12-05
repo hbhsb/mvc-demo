@@ -93,7 +93,8 @@ namespace CaterUI
                 if (bll.Add(memberInfo))
                 {
                     LoadList();
-
+                    LoadTypeList();
+                    Initialize();
                 }
                 else
                 {
@@ -102,14 +103,52 @@ namespace CaterUI
             }
             else
             {
-                MessageBox.Show("it need to edit");
+                memberInfo.MId = int.Parse(txtId.Text);
+                if (bll.Edit(memberInfo))
+                {
+                    LoadList();
+                    LoadTypeList();
+                    Initialize();
+                }
             }
 
         }
 
         private void Initialize()
         {
-            
+            txtId.Text = "";
+            txtNameAdd.Text = "";
+            txtPhoneAdd.Text = "";
+            txtMoney.Text = "";
+            txtId.Text = "添加时无编号";
+        }
+
+        private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //获取选中的行
+            var row = dgvList.Rows[e.RowIndex];
+            //将行中的数据显示到控件上
+            txtId.Text = row.Cells[0].Value.ToString();
+            txtNameAdd.Text = row.Cells[1].Value.ToString();
+            ddlType.Text = row.Cells[2].Value.ToString();
+            txtPhoneAdd.Text = row.Cells[3].Value.ToString();
+            txtMoney.Text = row.Cells[4].Value.ToString();
+            btnSave.Text = "修改";
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dgvList.SelectedRows[0].Cells[0].Value);
+            DialogResult result = MessageBox.Show("Are you sure", "dialog", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+            else
+            {
+                bll.Deletd(id);
+                LoadList();
+            }
         }
     }
 }

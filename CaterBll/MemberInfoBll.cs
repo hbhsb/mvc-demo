@@ -21,5 +21,15 @@ namespace CaterBll
         {
             return dal.Insert(memberInfo)>0;
         }
+
+        public bool Edit(MemberInfo memberInfo)
+        {
+            return dal.Update(memberInfo) > 0;
+        }
+
+        public bool Deletd(int id)
+        {
+            return dal.Delete(id) > 0;
+        }
     }
 }
