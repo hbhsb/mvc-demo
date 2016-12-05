@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,11 @@ namespace CaterDal
 {
     public partial class MemberInfoDal
     {
+        /// <summary>
+        /// 查询会员信息
+        /// </summary>
+        /// <param name="dictionary">根据用户名和手机号对会员进行搜索</param>
+        /// <returns></returns>
         public List<MemberInfo> GetList(Dictionary<string,string> dictionary )
         {
             string sql = "select mi.*,mti.MTitle as MTypeTitle " +
@@ -39,6 +45,20 @@ namespace CaterDal
                 });
             }
             return list;
+        }
+
+        public int Insert(MemberInfo memberInfo)
+        {
+            string sql =
+                "insert into memberinfo (mtypeid,mname,mphone,mmoney,misdelete) values (@tid,@name,@phone,@money,0)";
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@tid", memberInfo.MTypeId),
+                new SQLiteParameter("@name",memberInfo.MName),
+                new SQLiteParameter("@phone",memberInfo.MPhone),
+                new SQLiteParameter("@money",memberInfo.MMoney),   
+            };
+            return SqliteHelper.ExecuteNonQuery(sql, parameters);
         }
     }
 }

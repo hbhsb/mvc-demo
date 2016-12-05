@@ -16,5 +16,10 @@ namespace CaterBll
         {
             return dal.GetList(dictionary);
         }
+
+        public bool Add(MemberInfo memberInfo)
+        {
+            return dal.Insert(memberInfo)>0;
+        }
     }
 }
