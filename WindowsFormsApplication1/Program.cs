@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CaterUI
+namespace WindowsFormsApplication1
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace CaterUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDishTypeInfo());
+            Application.Run(new Form1());
         }
     }
 }

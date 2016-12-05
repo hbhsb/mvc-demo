@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{49215646-185D-410B-8FC0-BE28631F6385}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{0F3CC5C7-8442-407B-8C9E-C86325774E8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,11 +49,16 @@ Global
 		{49215646-185D-410B-8FC0-BE28631F6385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49215646-185D-410B-8FC0-BE28631F6385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49215646-185D-410B-8FC0-BE28631F6385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F3CC5C7-8442-407B-8C9E-C86325774E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F3CC5C7-8442-407B-8C9E-C86325774E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F3CC5C7-8442-407B-8C9E-C86325774E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F3CC5C7-8442-407B-8C9E-C86325774E8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{49215646-185D-410B-8FC0-BE28631F6385} = {AA8CD4BD-BDC1-47A0-98AB-9DEEE040BBBA}
+		{0F3CC5C7-8442-407B-8C9E-C86325774E8A} = {AA8CD4BD-BDC1-47A0-98AB-9DEEE040BBBA}
 	EndGlobalSection
 EndGlobal
